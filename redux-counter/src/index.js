@@ -15,16 +15,28 @@ const initialState = {
 function reducer(state = initialState, action) {
   // we'll leave this blank for now
   // which is the same as `return undefined;`
-  if(action.type === "INCREMNENT") {
-    return {
-      const: state.count + 1
-    };
+  switch(action.type) {
+    case 'INCREMENT':
+      return {
+        const: state.count + 1
+      };
+    case 'DECREMENT':
+      return {
+        const: state.count - 1
+      };
+    default: 
+      return state;
   }
-  
+  // if(action.type === "INCREMNENT") {
+  //   return {
+  //     const: state.count + 1
+  //   };
+  // }
+
   return state;
 }
 
-const store = createStore(recuder);
+const store = createStore(reducer);
 
 const App = () => (
   <Provider store={store}>
